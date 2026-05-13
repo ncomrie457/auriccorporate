@@ -396,10 +396,10 @@
 
     <!-- Step 1: Booking Details -->
     <div id="step-booking" class="card">
-      <h2>Complete Your Booking</h2>
-      <p class="subtitle">Please confirm your details and sign the corporate liability waiver below to complete your booking.</p>
+      <h2>Confirm Your Booking</h2>
+      <p class="subtitle">Please confirm the details below and sign the corporate liability waiver to complete your booking.</p>
 
-      <div class="section-header">Contact & Company</div>
+      <div class="section-header">Booking Details</div>
       <div class="form-grid">
         <div class="field">
           <label for="book-company">Company Name <span class="required">*</span></label>
@@ -422,20 +422,19 @@
           <div id="book-headcount-err" class="err-msg" role="alert"></div>
         </div>
         <div class="field">
-          <label for="book-class-type">Class Type</label>
-          <select id="book-class-type">
-            <option>Mat Pilates</option>
-            <option>Reformer Pilates</option>
-          </select>
+          <label for="book-date">Confirmed Date & Time <span class="required">*</span></label>
+          <input type="text" id="book-date" placeholder="e.g. June 25th at 10:00 AM" aria-required="true">
+          <div id="book-date-err" class="err-msg" role="alert"></div>
         </div>
         <div class="field">
-          <label for="book-location">Location</label>
-          <input type="text" id="book-location" placeholder="Address or studio name">
+          <label for="book-location">Confirmed Location <span class="required">*</span></label>
+          <input type="text" id="book-location" placeholder="Full address or studio name" aria-required="true">
+          <div id="book-location-err" class="err-msg" role="alert"></div>
         </div>
       </div>
       <div class="field">
-        <label for="book-injuries">Injuries or Physical Considerations</label>
-        <textarea id="book-injuries" placeholder="List any injuries or health considerations for any participants."></textarea>
+        <label for="book-injuries">Any injuries or health considerations to flag? <span style="color:var(--text-muted);font-weight:400;">(optional)</span></label>
+        <textarea id="book-injuries" placeholder="List any injuries or physical limitations for any participants."></textarea>
       </div>
 
       <button type="button" id="to-waiver-btn" class="btn btn-primary" style="margin-top:.75rem;">Continue to Waiver →</button>
@@ -683,12 +682,16 @@ document.addEventListener('DOMContentLoaded', function() {
     var name     = document.getElementById('book-name').value.trim();
     var email    = document.getElementById('book-email').value.trim();
     var headcount= document.getElementById('book-headcount').value.trim();
+    var date     = document.getElementById('book-date').value.trim();
+    var location = document.getElementById('book-location').value.trim();
     var ok = true;
 
     if (!company) { document.getElementById('book-company-err').textContent='Please enter your company name.'; ok=false; } else { document.getElementById('book-company-err').textContent=''; }
     if (!name||name.length<2) { document.getElementById('book-name-err').textContent='Please enter your full name.'; ok=false; } else { document.getElementById('book-name-err').textContent=''; }
     if (!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('book-email-err').textContent='Please enter a valid email.'; ok=false; } else { document.getElementById('book-email-err').textContent=''; }
     if (!headcount) { document.getElementById('book-headcount-err').textContent='Please enter the number of participants.'; ok=false; } else { document.getElementById('book-headcount-err').textContent=''; }
+    if (!date) { document.getElementById('book-date-err').textContent='Please confirm the date and time.'; ok=false; } else { document.getElementById('book-date-err').textContent=''; }
+    if (!location) { document.getElementById('book-location-err').textContent='Please confirm the location.'; ok=false; } else { document.getElementById('book-location-err').textContent=''; }
     if (!ok) return;
 
     document.getElementById('waiver-company-display').textContent = company;
@@ -801,7 +804,7 @@ document.addEventListener('DOMContentLoaded', function() {
         contact_name:  name,
         contact_email: email,
         headcount:     headcount,
-        class_type:    document.getElementById('book-class-type').value,
+        session_date:  document.getElementById('book-date').value.trim(),
         location:      document.getElementById('book-location').value.trim() || 'Not provided',
         injuries:      document.getElementById('book-injuries').value.trim() || 'None provided',
         sign_time:     timeStr,
