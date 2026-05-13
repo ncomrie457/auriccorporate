@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corporate Events | Auric Movement</title>
+  <meta name="description" content="Book a private Pilates class for your team. Mat or Reformer, all levels. Corporate wellness by Auric Movement.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://events.auricmovement.com">
+  <meta property="og:title" content="Corporate Events ✦ Auric Movement">
+  <meta property="og:description" content="Bring intentional movement to your team. Private mat and reformer Pilates classes for corporate groups.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Corporate Events ✦ Auric Movement">
+  <meta name="twitter:description" content="Private Pilates classes for corporate groups. Mat or Reformer, all levels.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Variables ── */
+    :root {
+      --brown:      #3d2c1e;
+      --gold:       #b07840;
+      --cream:      #f7f4ef;
+      --cream-light:#fdfbf8;
+      --cream-mid:  #f0ebe2;
+      --white:      #ffffff;
+      --border:     #e8ddd0;
+      --text-muted: #8a7968;
+      --red:        #c0392b;
+      --green:      #2e7d32;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--brown);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+    .hidden { display:none !important; }
+
+    /* ── Header ── */
+    .hero {
+      background: var(--cream-light);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      padding: 1.25rem 1.5rem;
+    }
+    .hero-title { font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:1.2rem; color:var(--brown); letter-spacing:.02em; }
+    .hero-sub { font-size:.8rem; color:var(--text-muted); margin-top:.3rem; letter-spacing:.05em; text-transform:uppercase; }
+
+    /* ── Tabs ── */
+    .tabs-nav { display:flex; gap:0; border-bottom:2px solid var(--border); max-width:900px; margin:0 auto; padding:0 1.25rem; }
+    .tab-btn { background:none; border:none; padding:.85rem 1.5rem; font-family:'Jost',sans-serif; font-size:.9rem; font-weight:600; color:var(--text-muted); cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-2px; transition:all .2s; letter-spacing:.02em; }
+    .tab-btn:hover { color:var(--brown); }
+    .tab-btn.active { color:var(--brown); border-bottom-color:var(--gold); }
+    .tab-panel { display:none; }
+    .tab-panel.active { display:block; }
+
+    /* ── Layout ── */
+    .page-wrap { max-width:900px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+
+    /* ── Card ── */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem 1.75rem;
+      box-shadow: 0 2px 12px rgba(92,74,58,.06);
+      margin-bottom: 1.5rem;
+    }
+    .card h2 { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--brown); margin-bottom:.4rem; }
+    .card .subtitle { font-size:.88rem; color:var(--text-muted); margin-bottom:1.5rem; line-height:1.7; }
+
+    /* ── Form ── */
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    @media(max-width:600px){ .form-grid { grid-template-columns:1fr; } }
+    .form-grid.full { grid-template-columns:1fr; }
+
+    .field { margin-bottom:1rem; }
+    .field label { display:block; font-size:.82rem; font-weight:600; color:var(--brown); margin-bottom:.4rem; letter-spacing:.02em; }
+    .field input, .field select, .field textarea {
+      width:100%; padding:.65rem .9rem;
+      border:1.5px solid var(--border); border-radius:10px;
+      font-family:'Jost',sans-serif; font-size:.9rem; color:var(--brown);
+      background:var(--cream-light); transition:border-color .2s;
+      outline:none;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color:var(--gold); background:var(--white); }
+    .field textarea { resize:vertical; min-height:80px; }
+    .required { color:var(--gold); }
+    .err-msg { color:var(--red); font-size:.78rem; margin-top:.3rem; min-height:1rem; }
+
+    /* ── Buttons ── */
+    .btn { display:inline-flex; align-items:center; gap:.5rem; padding:.75rem 1.5rem; border-radius:10px; font-family:'Jost',sans-serif; font-weight:600; font-size:.9rem; cursor:pointer; border:none; transition:all .2s; }
+    .btn-primary { background:var(--brown); color:#fff; }
+    .btn-primary:hover { background:#2c1f13; }
+    .btn-secondary { background:var(--cream-mid); color:var(--brown); border:1px solid var(--border); }
+    .btn-full { width:100%; justify-content:center; }
+
+    /* ── Section headers ── */
+    .section-header {
+      font-size:.72rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase;
+      color:var(--gold); border-bottom:1px solid var(--border); padding-bottom:.5rem;
+      margin:1.5rem 0 1rem;
+    }
+
+    /* ── Progress ── */
+    .progress-section { margin-bottom:1rem; }
+    .progress-label { display:flex; justify-content:space-between; font-size:.78rem; color:var(--text-muted); margin-bottom:.4rem; }
+    .progress-track { height:6px; background:var(--cream-mid); border-radius:3px; overflow:hidden; }
+    .progress-fill { height:100%; background:var(--gold); border-radius:3px; transition:width .3s ease; width:0%; }
+
+    /* ── Clauses ── */
+    .clause { display:flex; gap:.75rem; align-items:flex-start; padding:.75rem; border-radius:10px; border:1px solid transparent; transition:all .2s; margin-bottom:.5rem; }
+    .clause:hover { background:var(--cream-light); border-color:var(--border); }
+    .clause.checked { background:#faf5ee; border-color:var(--gold); }
+    .clause input[type="checkbox"] { width:18px; height:18px; flex-shrink:0; margin-top:2px; accent-color:var(--gold); cursor:pointer; }
+    .clause-text { font-size:.83rem; color:var(--brown); line-height:1.65; cursor:pointer; }
+    .clause-num { font-weight:700; color:var(--gold); margin-right:.35rem; }
+
+    /* ── Signature ── */
+    .sig-section { margin-top:1.5rem; }
+    .statement { background:var(--cream-light); border:1px solid var(--border); border-radius:10px; padding:1rem; font-size:.83rem; color:var(--brown); line-height:1.7; margin-bottom:1rem; }
+    .final-check { display:flex; gap:.75rem; align-items:flex-start; margin-bottom:1rem; font-size:.85rem; }
+    .final-check input { width:18px; height:18px; flex-shrink:0; margin-top:2px; accent-color:var(--gold); }
+
+    /* ── Success ── */
+    .success-card { text-align:center; }
+    .success-card .checkmark { font-size:2.5rem; color:var(--gold); display:block; margin-bottom:1rem; }
+    .success-card h2 { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--brown); margin-bottom:.5rem; }
+    .detail { font-size:.88rem; color:var(--text-muted); margin-bottom:.35rem; text-align:left; }
+
+    /* ── Info box ── */
+    .info-box { background:var(--cream-light); border:1px solid var(--border); border-radius:12px; padding:1.25rem; margin-bottom:1.5rem; }
+    .info-box h3 { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--brown); margin-bottom:.5rem; }
+    .info-box p { font-size:.85rem; color:var(--text-muted); line-height:1.7; }
+    .info-box ul { font-size:.85rem; color:var(--text-muted); line-height:1.9; padding-left:1.25rem; }
+
+    /* ── Footer ── */
+    footer {
+      text-align:center; font-size:.78rem; color:var(--text-muted);
+      padding:1.5rem; border-top:1px solid var(--border);
+      letter-spacing:.03em;
+    }
+    footer button { background:none; border:none; color:var(--gold); cursor:pointer; font-size:.78rem; text-decoration:underline; font-family:'Jost',sans-serif; }
+
+    /* ── Modal ── */
+    .modal-backdrop { position:fixed; inset:0; z-index:500; background:rgba(44,26,14,.6); backdrop-filter:blur(8px); display:flex; align-items:center; justify-content:center; padding:1rem; }
+    .modal-box { background:var(--white); border-radius:16px; padding:2rem; max-width:640px; width:100%; max-height:85vh; overflow-y:auto; position:relative; }
+    .modal-close { background:none; border:none; font-size:1.4rem; cursor:pointer; color:var(--text-muted); position:absolute; top:1rem; right:1rem; }
+    .modal-box h2 { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--brown); margin-bottom:1rem; }
+    .modal-box h4 { font-size:.85rem; font-weight:700; color:var(--brown); margin:1rem 0 .35rem; }
+    .modal-box p { font-size:.83rem; color:var(--text-muted); line-height:1.7; margin-bottom:.5rem; }
+
+    @media(max-width:600px){ .tab-btn { padding:.75rem 1rem; font-size:.82rem; } }
+    @media(prefers-reduced-motion:reduce){ *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; } }
+  </style>
+</head>
+<body>
+
+<a href="#main-content" class="sr-only">Skip to main content</a>
+<div aria-live="polite" aria-atomic="true" class="sr-only" id="sr-announce"></div>
+
+<!-- Hero -->
+<section class="hero" role="banner">
+  <div class="hero-title">Auric Movement</div>
+  <p class="hero-sub">Corporate Wellness & Private Events</p>
+</section>
+
+<!-- Tabs -->
+<nav class="tabs-nav" role="tablist" aria-label="Booking options">
+  <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-inquiry" id="btn-inquiry">Get a Quote</button>
+  <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-booking" id="btn-booking" id="booking-tab-btn">Complete Booking</button>
+</nav>
+
+<main id="main-content" role="main">
+
+<!-- TAB 1: Inquiry -->
+<div id="tab-inquiry" class="tab-panel active" role="tabpanel" aria-labelledby="btn-inquiry">
+  <div class="page-wrap">
+
+    <div class="info-box">
+      <h3>Bring Movement to Your Team ✦</h3>
+      <p>Fill out the form below and we'll be in touch within 48 hours to discuss your needs and provide a custom quote.</p>
+      <p style="margin-top:.6rem;">Please note: we will do our best to accommodate your preferred location, however availability may vary. Alternatives will be provided where needed.</p>
+    </div>
+
+    <!-- Step 1: Inquiry Form -->
+    <div id="step-inquiry" class="card">
+      <h2>Request a Quote</h2>
+      <p class="subtitle">Tell us about your team and what you're looking for. All fields marked * are required.</p>
+
+      <div class="section-header">Contact Information</div>
+      <div class="form-grid">
+        <div class="field">
+          <label for="company-name">Company Name <span class="required">*</span></label>
+          <input type="text" id="company-name" placeholder="Your company name" aria-required="true">
+          <div id="company-name-err" class="err-msg" role="alert"></div>
+        </div>
+        <div class="field">
+          <label for="contact-name">Your Full Name <span class="required">*</span></label>
+          <input type="text" id="contact-name" placeholder="Your full name" aria-required="true">
+          <div id="contact-name-err" class="err-msg" role="alert"></div>
+        </div>
+        <div class="field">
+          <label for="contact-email">Email Address <span class="required">*</span></label>
+          <input type="email" id="contact-email" placeholder="your@company.com" aria-required="true">
+          <div id="contact-email-err" class="err-msg" role="alert"></div>
+        </div>
+        <div class="field">
+          <label for="contact-phone">Phone Number</label>
+          <input type="tel" id="contact-phone" placeholder="+1 (555) 000-0000">
+        </div>
+        <div class="field">
+          <label for="industry">Industry</label>
+          <input type="text" id="industry" placeholder="e.g. Finance, Tech, Healthcare">
+        </div>
+        <div class="field">
+          <label for="referral-source">How did you hear about us?</label>
+          <select id="referral-source">
+            <option value="">Select one</option>
+            <option>Instagram</option>
+            <option>Word of mouth</option>
+            <option>Google search</option>
+            <option>LinkedIn</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="section-header">Class Details</div>
+      <div class="form-grid">
+        <div class="field">
+          <label for="class-type">Class Type <span class="required">*</span></label>
+          <select id="class-type" aria-required="true">
+            <option value="">Select one</option>
+            <option>Mat Pilates</option>
+            <option>Reformer Pilates</option>
+            <option>Both / Open to suggestions</option>
+          </select>
+          <div id="class-type-err" class="err-msg" role="alert"></div>
+        </div>
+        <div class="field">
+          <label for="class-level">Level</label>
+          <select id="class-level">
+            <option value="">Select one</option>
+            <option>Beginner</option>
+            <option>Intermediate</option>
+            <option>Advanced</option>
+            <option>Mixed / All levels</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="duration">Preferred Duration</label>
+          <select id="duration">
+            <option value="">Select one</option>
+            <option>45 minutes</option>
+            <option>60 minutes</option>
+            <option>90 minutes</option>
+            <option>Open to suggestions</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="frequency">Frequency</label>
+          <select id="frequency">
+            <option value="">Select one</option>
+            <option>One-time session</option>
+            <option>Weekly</option>
+            <option>Bi-weekly</option>
+            <option>Monthly</option>
+            <option>Custom package</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="headcount">Number of Participants <span class="required">*</span></label>
+          <input type="number" id="headcount" placeholder="e.g. 15" min="1" aria-required="true">
+          <div id="headcount-err" class="err-msg" role="alert"></div>
+        </div>
+        <div class="field">
+          <label for="experience">Prior Pilates Experience</label>
+          <select id="experience">
+            <option value="">Select one</option>
+            <option>None — complete beginners</option>
+            <option>Some experience</option>
+            <option>Regular practitioners</option>
+            <option>Mixed group</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="section-header">Logistics</div>
+      <div class="form-grid">
+        <div class="field">
+          <label for="location">Preferred Location <span class="required">*</span></label>
+          <select id="location" aria-required="true">
+            <option value="">Select one</option>
+            <option>Our office / corporate space</option>
+            <option>A studio (you arrange)</option>
+            <option>A studio (we arrange)</option>
+            <option>Outdoor space</option>
+            <option>Open to suggestions</option>
+          </select>
+          <div id="location-err" class="err-msg" role="alert"></div>
+        </div>
+        <div class="field">
+          <label for="space-status">Do you already have a space?</label>
+          <select id="space-status">
+            <option value="">Select one</option>
+            <option>Yes — we have a space, just need an instructor</option>
+            <option>No — open to suggestions</option>
+            <option>No — need help finding a space</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="preferred-day">Preferred Day</label>
+          <select id="preferred-day">
+            <option value="">Select one</option>
+            <option>Weekday morning</option>
+            <option>Weekday afternoon</option>
+            <option>Weekday evening</option>
+            <option>Weekend morning</option>
+            <option>Weekend afternoon</option>
+            <option>Flexible</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="timeline">When do you need this by?</label>
+          <input type="text" id="timeline" placeholder="e.g. Within 2 weeks, End of Q2">
+        </div>
+      </div>
+      <div class="field">
+        <label for="theme">Do you have a theme or intention in mind? <span style="color:var(--text-muted);font-weight:400;">(optional)</span></label>
+        <input type="text" id="theme" placeholder="e.g. stress relief, team energizer, mindfulness, post-conference wind-down">
+      </div>
+
+      <div class="section-header">Budget & Health</div>
+      <div class="form-grid">
+        <div class="field">
+          <label for="budget">Budget Range</label>
+          <select id="budget">
+            <option value="">Select one</option>
+            <option>Under $500</option>
+            <option>$500 – $1,000</option>
+            <option>$1,000 – $2,500</option>
+            <option>$2,500 – $5,000</option>
+            <option>$5,000+</option>
+            <option>Open / TBD</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="injuries">Injuries or Physical Considerations</label>
+        <textarea id="injuries" placeholder="List any injuries, physical limitations, or health considerations the instructor should be aware of for any participants."></textarea>
+      </div>
+      <div class="field">
+        <label for="additional-notes">Additional Notes</label>
+        <textarea id="additional-notes" placeholder="Anything else we should know?"></textarea>
+      </div>
+
+      <div style="margin-top:.75rem;font-size:.8rem;color:var(--text-muted);">
+        By submitting you agree to our <button type="button" id="open-privacy-btn" style="background:none;border:none;color:var(--gold);cursor:pointer;font-size:.8rem;text-decoration:underline;font-family:'Jost',sans-serif;padding:0;">Privacy Policy</button>.
+      </div>
+
+      <div style="margin-top:1.25rem;">
+        <button type="button" id="inquiry-submit-btn" class="btn btn-primary btn-full">Submit Inquiry →</button>
+      </div>
+      <div id="inquiry-status" style="margin-top:.75rem;font-size:.85rem;"></div>
+    </div>
+
+    <!-- Step 2: Inquiry Confirmed -->
+    <div id="step-inquiry-done" class="card success-card hidden">
+      <span class="checkmark" aria-hidden="true">✦</span>
+      <h2>Thank You!</h2>
+      <p style="color:var(--text-muted);font-size:.9rem;margin-bottom:1rem;">Your inquiry has been received. We'll be in touch within <strong>48 hours</strong> with availability and a custom quote.</p>
+      <p style="font-size:.85rem;color:var(--text-muted);">Questions in the meantime? Email us at <a href="mailto:auricmovement@outlook.com" style="color:var(--gold);">auricmovement@outlook.com</a></p>
+      <div style="margin-top:1.25rem;">
+        <button type="button" id="inquiry-new-btn" class="btn btn-secondary">Submit Another Inquiry</button>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /tab-inquiry -->
+
+<!-- TAB 2: Booking (hidden — URL param only) -->
+<div id="tab-booking" class="tab-panel" role="tabpanel" aria-labelledby="btn-booking">
+  <div class="page-wrap">
+
+    <!-- Step 1: Booking Details -->
+    <div id="step-booking" class="card">
+      <h2>Complete Your Booking</h2>
+      <p class="subtitle">Please confirm your details and sign the corporate liability waiver below to complete your booking.</p>
+
+      <div class="section-header">Contact & Company</div>
+      <div class="form-grid">
+        <div class="field">
+          <label for="book-company">Company Name <span class="required">*</span></label>
+          <input type="text" id="book-company" placeholder="Your company name" aria-required="true">
+          <div id="book-company-err" class="err-msg" role="alert"></div>
+        </div>
+        <div class="field">
+          <label for="book-name">Your Full Name <span class="required">*</span></label>
+          <input type="text" id="book-name" placeholder="Your full legal name" aria-required="true">
+          <div id="book-name-err" class="err-msg" role="alert"></div>
+        </div>
+        <div class="field">
+          <label for="book-email">Email Address <span class="required">*</span></label>
+          <input type="email" id="book-email" placeholder="your@company.com" aria-required="true">
+          <div id="book-email-err" class="err-msg" role="alert"></div>
+        </div>
+        <div class="field">
+          <label for="book-headcount">Number of Participants <span class="required">*</span></label>
+          <input type="number" id="book-headcount" placeholder="e.g. 15" min="1" aria-required="true">
+          <div id="book-headcount-err" class="err-msg" role="alert"></div>
+        </div>
+        <div class="field">
+          <label for="book-class-type">Class Type</label>
+          <select id="book-class-type">
+            <option>Mat Pilates</option>
+            <option>Reformer Pilates</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="book-location">Location</label>
+          <input type="text" id="book-location" placeholder="Address or studio name">
+        </div>
+      </div>
+      <div class="field">
+        <label for="book-injuries">Injuries or Physical Considerations</label>
+        <textarea id="book-injuries" placeholder="List any injuries or health considerations for any participants."></textarea>
+      </div>
+
+      <button type="button" id="to-waiver-btn" class="btn btn-primary" style="margin-top:.75rem;">Continue to Waiver →</button>
+    </div>
+
+    <!-- Step 2: Corporate Waiver -->
+    <div id="step-waiver" class="card hidden">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.5rem;margin-bottom:.4rem;">
+        <h2>Corporate Liability Waiver</h2>
+        <span style="font-size:.85rem;color:var(--text-muted);">Signing as <strong id="waiver-company-display"></strong></span>
+      </div>
+      <p class="subtitle">Read each clause carefully. All 19 clauses must be acknowledged before signing.</p>
+
+      <div class="progress-section">
+        <div class="progress-label">
+          <span><span id="corp-confirmed-count">0</span>/19 confirmed</span>
+          <span id="corp-remaining-text">19 remaining</span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="19" id="corp-progress-track">
+          <div class="progress-fill" id="corp-progress-fill"></div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:.75rem;">
+        <button type="button" id="corp-select-all-btn" class="btn btn-secondary" style="font-size:.82rem;padding:.5rem 1rem;width:100%;justify-content:center;">✓ Select All Clauses</button>
+      </div>
+
+      <div id="corp-clauses-container" role="group" aria-label="Corporate waiver clauses"></div>
+
+      <div class="sig-section">
+        <div class="statement">
+          I, <strong id="corp-waiver-name-stmt"></strong>, as an authorized representative of <strong id="corp-waiver-company-stmt"></strong>, acknowledge that I have carefully read and fully understand this Corporate Liability Waiver &amp; Release. I understand that I am signing on behalf of the company and all participating employees/guests, and that this agreement is legally binding.
+        </div>
+        <div class="final-check">
+          <input type="checkbox" id="corp-final-agree" disabled>
+          <label for="corp-final-agree">I have read, understood, and agree to all terms above on behalf of myself and my company</label>
+        </div>
+        <p style="font-size:.78rem;color:var(--text-muted);line-height:1.6;margin-bottom:.75rem;">By typing your name below you are signing this agreement electronically. Your electronic signature is legally binding under the E-SIGN Act, 15 U.S.C. § 7001.</p>
+        <div class="field">
+          <label for="corp-sig-input">Digital Signature — Type your full legal name <span class="required">*</span></label>
+          <input type="text" id="corp-sig-input" placeholder="Type your full legal name" aria-required="true" disabled>
+          <div id="corp-sig-err" class="err-msg" role="alert"></div>
+        </div>
+        <button type="button" id="corp-submit-btn" class="btn btn-primary btn-full" disabled>Submit Booking ✦</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Booking Confirmed -->
+    <div id="step-booking-done" class="card success-card hidden">
+      <span class="checkmark" aria-hidden="true">✦</span>
+      <h2 style="color:var(--brown);">Booking Submitted!</h2>
+      <p style="color:var(--text-muted);font-size:.9rem;margin-bottom:1.25rem;">Your corporate waiver has been signed and your booking details have been received.</p>
+      <p class="detail"><strong>Company:</strong> <span id="booking-conf-company"></span></p>
+      <p class="detail"><strong>Contact:</strong> <span id="booking-conf-name"></span></p>
+      <p class="detail"><strong>Signed at:</strong> <span id="booking-conf-time"></span></p>
+      <div id="booking-email-status"></div>
+      <div style="margin-top:1.25rem;padding:1rem 1.25rem;background:#faf5ee;border:1px solid var(--border);border-radius:10px;text-align:left;">
+        <p style="font-size:.9rem;color:var(--brown);font-weight:700;margin-bottom:.5rem;">What happens next?</p>
+        <p style="font-size:.85rem;color:#3d322a;line-height:1.75;">We'll send you an invoice and confirm all final details via email. Questions? Reach us at <a href="mailto:auricmovement@outlook.com" style="color:var(--gold);">auricmovement@outlook.com</a></p>
+      </div>
+      <div style="margin-top:1rem;padding:.75rem 1rem;background:#fef9e7;border:1px solid #f0dca0;border-radius:10px;font-size:.82rem;color:#7a6320;line-height:1.6;">
+        📬 <strong>Can't find your confirmation email?</strong> Please check your <strong>spam or junk folder</strong>.
+      </div>
+    </div>
+
+  </div>
+</div><!-- /tab-booking -->
+
+</main>
+
+<!-- Privacy Modal -->
+<div id="privacy-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+  <div class="modal-box">
+    <button class="modal-close" id="close-privacy-btn" aria-label="Close privacy policy">✕</button>
+    <h2 id="privacy-title">Privacy Policy</h2>
+    <h4>1. Information We Collect</h4>
+    <p>We collect name, email, phone number, company name, and health information provided in the inquiry or booking form.</p>
+    <h4>2. How We Use It</h4>
+    <p>Information is used solely to respond to your inquiry, process your booking, and deliver safe and appropriate instruction.</p>
+    <h4>3. How Your Data Is Stored</h4>
+    <p>Inquiry and booking data is transmitted via EmailJS to our inbox at auricmovement@outlook.com. We do not operate a centralized database. All data is handled in compliance with the NY SHIELD Act.</p>
+    <h4>4. Data Retention</h4>
+    <p>Your data is retained only as long as necessary to fulfill your booking and is deleted within 30 days following the event date.</p>
+    <h4>5. Contact</h4>
+    <p>For any privacy concerns contact auricmovement@outlook.com.</p>
+  </div>
+</div>
+
+<footer role="contentinfo">
+  Auric Movement · Corporate Events ·
+  <button type="button" id="open-privacy-btn-footer">Privacy Policy</button> ·
+  auricmovement@outlook.com
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  var EMAILJS_PUBLIC_KEY  = 'xr1kT3l8rFhNodudq';
+  var EMAILJS_SERVICE_ID  = 'service_9n4adla';
+  var TMPL_INQUIRY_NOTIFY = 'template_n2g8qps'; // Corporate Inquiry — to you
+  var TMPL_INQUIRY_CONFIRM= 'template_r9qts6s'; // Inquiry Confirmation — to them
+  var TMPL_BOOKING_SIGNED = 'template_hs76rf1'; // Corporate Waiver Signed — to you
+
+  if (typeof emailjs !== 'undefined') emailjs.init(EMAILJS_PUBLIC_KEY);
+
+  function announce(msg) {
+    var el = document.getElementById('sr-announce');
+    el.textContent = ''; setTimeout(function(){ el.textContent = msg; }, 80);
+  }
+  function escapeHTML(str) { var d=document.createElement('div'); d.textContent=str; return d.innerHTML; }
+  function genCode() { return 'AUR-' + Math.random().toString(36).substr(2,6).toUpperCase(); }
+
+  // ── Tabs ──────────────────────────────────────────────────────────────────
+  function switchTab(tabId) {
+    document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+    document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+    var btn = document.querySelector('[aria-controls="'+tabId+'"]');
+    if (btn) { btn.classList.add('active'); btn.setAttribute('aria-selected','true'); }
+    var panel = document.getElementById(tabId);
+    if (panel) panel.classList.add('active');
+  }
+
+  document.querySelectorAll('.tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() { switchTab(btn.getAttribute('aria-controls')); });
+  });
+
+  // Check URL param for booking tab
+  var urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('booking') === 'corporate') {
+    setTimeout(function(){ switchTab('tab-booking'); }, 100);
+  }
+
+  // ── Modals ────────────────────────────────────────────────────────────────
+  var lastFocused = null;
+  function getFocusable(el) {
+    return Array.from(el.querySelectorAll('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])'));
+  }
+  function openModal(id) {
+    lastFocused = document.activeElement;
+    var m = document.getElementById(id); m.classList.remove('hidden');
+    var f = getFocusable(m); if (f.length) f[0].focus();
+    m.addEventListener('keydown', trapFocus);
+  }
+  function closeModal(id) {
+    var m = document.getElementById(id); m.classList.add('hidden');
+    m.removeEventListener('keydown', trapFocus);
+    if (lastFocused) lastFocused.focus();
+  }
+  function trapFocus(e) {
+    if (e.key !== 'Tab') return;
+    var f = getFocusable(e.currentTarget); var first=f[0]; var last=f[f.length-1];
+    if (e.shiftKey){ if(document.activeElement===first){ e.preventDefault(); last.focus(); } }
+    else { if(document.activeElement===last){ e.preventDefault(); first.focus(); } }
+  }
+  ['open-privacy-btn','open-privacy-btn-footer'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('click', function(){ openModal('privacy-modal'); });
+  });
+  document.getElementById('close-privacy-btn').addEventListener('click', function(){ closeModal('privacy-modal'); });
+  document.getElementById('privacy-modal').addEventListener('click', function(e){ if(e.target===this) closeModal('privacy-modal'); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && !document.getElementById('privacy-modal').classList.contains('hidden')) closeModal('privacy-modal'); });
+
+  // ── Inquiry Form ──────────────────────────────────────────────────────────
+  document.getElementById('inquiry-submit-btn').addEventListener('click', function() {
+    var companyName  = document.getElementById('company-name').value.trim();
+    var contactName  = document.getElementById('contact-name').value.trim();
+    var contactEmail = document.getElementById('contact-email').value.trim();
+    var classType    = document.getElementById('class-type').value;
+    var headcount    = document.getElementById('headcount').value.trim();
+    var location     = document.getElementById('location').value;
+    var ok = true;
+
+    if (!companyName) { document.getElementById('company-name-err').textContent='Please enter your company name.'; ok=false; } else { document.getElementById('company-name-err').textContent=''; }
+    if (!contactName||contactName.length<2) { document.getElementById('contact-name-err').textContent='Please enter your full name.'; ok=false; } else { document.getElementById('contact-name-err').textContent=''; }
+    if (!contactEmail||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactEmail)) { document.getElementById('contact-email-err').textContent='Please enter a valid email.'; ok=false; } else { document.getElementById('contact-email-err').textContent=''; }
+    if (!classType) { document.getElementById('class-type-err').textContent='Please select a class type.'; ok=false; } else { document.getElementById('class-type-err').textContent=''; }
+    if (!headcount) { document.getElementById('headcount-err').textContent='Please enter the number of participants.'; ok=false; } else { document.getElementById('headcount-err').textContent=''; }
+    if (!location) { document.getElementById('location-err').textContent='Please select a location preference.'; ok=false; } else { document.getElementById('location-err').textContent=''; }
+    if (!ok) return;
+
+    var btn = document.getElementById('inquiry-submit-btn');
+    btn.disabled=true; btn.textContent='Submitting...';
+    document.getElementById('inquiry-status').innerHTML='';
+
+    var params = {
+      company_name:    companyName,
+      contact_name:    contactName,
+      contact_email:   contactEmail,
+      contact_phone:   document.getElementById('contact-phone').value.trim() || 'Not provided',
+      industry:        document.getElementById('industry').value.trim() || 'Not provided',
+      referral_source: document.getElementById('referral-source').value || 'Not provided',
+      class_type:      classType,
+      class_level:     document.getElementById('class-level').value || 'Not provided',
+      duration:        document.getElementById('duration').value || 'Not provided',
+      frequency:       document.getElementById('frequency').value || 'Not provided',
+      headcount:       headcount,
+      experience:      document.getElementById('experience').value || 'Not provided',
+      location:        location,
+      space_status:    document.getElementById('space-status').value || 'Not provided',
+      preferred_day:   document.getElementById('preferred-day').value || 'Not provided',
+      timeline:        document.getElementById('timeline').value.trim() || 'Not provided',
+      theme:           document.getElementById('theme').value.trim() || 'Not provided',
+      budget:          document.getElementById('budget').value || 'Not provided',
+      injuries:        document.getElementById('injuries').value.trim() || 'None provided',
+      additional_notes:document.getElementById('additional-notes').value.trim() || 'None'
+    };
+
+    if (typeof emailjs !== 'undefined') {
+      // Send to you
+      emailjs.send(EMAILJS_SERVICE_ID, TMPL_INQUIRY_NOTIFY, params)
+        .then(function(){
+          // Send confirmation to them
+          return emailjs.send(EMAILJS_SERVICE_ID, TMPL_INQUIRY_CONFIRM, {
+            contact_name:  contactName,
+            to_email:      contactEmail,
+            company_name:  companyName
+          });
+        })
+        .then(function(){
+          btn.disabled=false; btn.textContent='Submit Inquiry →';
+          document.getElementById('step-inquiry').classList.add('hidden');
+          document.getElementById('step-inquiry-done').classList.remove('hidden');
+          announce('Inquiry submitted! We will be in touch within 48 hours.');
+        })
+        .catch(function(){
+          btn.disabled=false; btn.textContent='Submit Inquiry →';
+          document.getElementById('inquiry-status').innerHTML='<span style="color:var(--red);">⚠️ Could not submit. Please email us directly at auricmovement@outlook.com</span>';
+        });
+    } else {
+      btn.disabled=false; btn.textContent='Submit Inquiry →';
+      document.getElementById('inquiry-status').innerHTML='<span style="color:var(--red);">⚠️ Email service unavailable. Please contact auricmovement@outlook.com directly.</span>';
+    }
+  });
+
+  document.getElementById('inquiry-new-btn').addEventListener('click', function(){
+    document.getElementById('step-inquiry').classList.remove('hidden');
+    document.getElementById('step-inquiry-done').classList.add('hidden');
+  });
+
+  // ── Booking / Waiver ──────────────────────────────────────────────────────
+  document.getElementById('to-waiver-btn').addEventListener('click', function(){
+    var company  = document.getElementById('book-company').value.trim();
+    var name     = document.getElementById('book-name').value.trim();
+    var email    = document.getElementById('book-email').value.trim();
+    var headcount= document.getElementById('book-headcount').value.trim();
+    var ok = true;
+
+    if (!company) { document.getElementById('book-company-err').textContent='Please enter your company name.'; ok=false; } else { document.getElementById('book-company-err').textContent=''; }
+    if (!name||name.length<2) { document.getElementById('book-name-err').textContent='Please enter your full name.'; ok=false; } else { document.getElementById('book-name-err').textContent=''; }
+    if (!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('book-email-err').textContent='Please enter a valid email.'; ok=false; } else { document.getElementById('book-email-err').textContent=''; }
+    if (!headcount) { document.getElementById('book-headcount-err').textContent='Please enter the number of participants.'; ok=false; } else { document.getElementById('book-headcount-err').textContent=''; }
+    if (!ok) return;
+
+    document.getElementById('waiver-company-display').textContent = company;
+    document.getElementById('corp-waiver-name-stmt').textContent  = name;
+    document.getElementById('corp-waiver-company-stmt').textContent = company;
+    buildCorpClauses();
+    document.getElementById('step-booking').classList.add('hidden');
+    document.getElementById('step-waiver').classList.remove('hidden');
+    document.getElementById('step-waiver').scrollIntoView({behavior:'smooth'});
+    announce('Corporate waiver loaded. 19 clauses to review.');
+  });
+
+  // Corporate waiver clauses
+  var corpClauses = [
+    'I acknowledge that mat and/or reformer Pilates involves physical exercise and movement that carries inherent risks of physical injury, including but not limited to muscle strains, joint injuries, falls, and cardiovascular events.',
+    'I, on behalf of myself and all participants under this corporate booking, voluntarily assume all risks associated with participation in Auric Movement classes, whether known or unknown, foreseen or unforeseen.',
+    'As the authorized representative of the company named in this booking, I confirm that I have the authority to sign this waiver on behalf of all participating employees and/or guests.',
+    'I confirm that all participants have been informed of the physical nature of this activity and have been advised to consult a physician prior to participation if they have any medical conditions, injuries, or physical limitations.',
+    'I confirm that all known injuries, medical conditions, and physical limitations of participants have been disclosed in the inquiry form. I understand that failure to disclose may result in increased risk of injury.',
+    'I, on behalf of the company and all participants, release, waive, discharge, and covenant not to sue Auric Movement, its instructors, agents, and affiliates from any and all claims, damages, losses, or liability arising from participation in this class.',
+    'This release includes claims arising from the negligence of Auric Movement or its instructors, to the fullest extent permitted by law.',
+    'I agree to indemnify and hold harmless Auric Movement, its instructors, agents, and affiliates from any claims, damages, or expenses (including legal fees) arising from the participation of any individual under this corporate booking.',
+    'I acknowledge that if the class is held at a location provided by the company, Auric Movement is not responsible for the condition, safety, or suitability of that space or any equipment provided by the company.',
+    'I agree that the Auric Movement instructor has the authority to modify, pause, or end any activity if they determine it is unsafe for any participant. Participants who cannot safely continue may be asked to stop.',
+    'All participants must be at least 18 years of age or accompanied by a legal guardian. I confirm that all participants under this booking meet this requirement.',
+    'In the event of a medical emergency during the session, I authorize Auric Movement instructors to call emergency services and take any reasonable steps necessary to assist any participant. I understand that Auric Movement is not liable for costs associated with emergency services.',
+    'Auric Movement reserves the right to refuse service to any participant who appears unfit to participate safely, is disruptive, or poses a risk to themselves or others. No refund will be issued in such cases.',
+    'Participants are responsible for any damage caused to studio equipment or property through negligent or intentional misuse. The company agrees to cover the cost of any such damages.',
+    'Class content, sequences, and programming created by Auric Movement are proprietary and may not be recorded, reproduced, or distributed without prior written consent from Auric Movement.',
+    'Auric Movement is not liable for cancellations or modifications due to circumstances beyond our reasonable control, including but not limited to weather events, venue unavailability, illness, government restrictions, or other force majeure events. Rescheduling will be offered where possible.',
+    'I understand that late arrivals may not be permitted to join the class in progress for safety reasons. No refunds or credits will be issued for late arrivals or no-shows. Cancellations must be made at least 48 hours before the scheduled class to be eligible for rescheduling.',
+    'Any disputes arising out of or related to this agreement or the services provided by Auric Movement shall be resolved through binding arbitration in accordance with the rules of the American Arbitration Association, rather than through litigation, in New York County, New York.',
+    'I confirm that I am at least 18 years of age, of sound mind, and legally authorized to enter into this binding agreement on behalf of the company named in this booking. I have read this waiver in full, understand its contents, and sign it freely and voluntarily.'
+  ];
+
+  var corpChecked = {}; var corpCount = 0;
+
+  function buildCorpClauses() {
+    var container = document.getElementById('corp-clauses-container');
+    container.innerHTML = ''; corpChecked={}; corpCount=0; updateCorpProgress();
+    var selBtn = document.getElementById('corp-select-all-btn');
+    if (selBtn){ selBtn.textContent='✓ Select All Clauses'; selBtn.disabled=false; }
+    corpClauses.forEach(function(text, i){
+      var div=document.createElement('div'); div.className='clause';
+      var cb=document.createElement('input'); cb.type='checkbox'; cb.id='corpcb-'+i;
+      cb.setAttribute('aria-label','Agree to clause '+(i+1)+' of 19');
+      var lbl=document.createElement('label'); lbl.htmlFor='corpcb-'+i; lbl.className='clause-text';
+      lbl.innerHTML='<span class="clause-num">'+(i+1)+'.</span> '+text;
+      cb.addEventListener('change', function(){
+        if(this.checked){ corpChecked[i]=true; div.classList.add('checked'); }
+        else { delete corpChecked[i]; div.classList.remove('checked'); }
+        updateCorpProgress();
+      });
+      div.appendChild(cb); div.appendChild(lbl); container.appendChild(div);
+    });
+  }
+
+  function updateCorpProgress() {
+    corpCount = Object.keys(corpChecked).length;
+    document.getElementById('corp-confirmed-count').textContent = corpCount;
+    document.getElementById('corp-remaining-text').textContent  = (19-corpCount)+' remaining';
+    document.getElementById('corp-progress-fill').style.width   = (corpCount/19*100)+'%';
+    document.getElementById('corp-progress-track').setAttribute('aria-valuenow', corpCount);
+    var fa = document.getElementById('corp-final-agree');
+    if (corpCount===19){ fa.disabled=false; }
+    else { fa.disabled=true; fa.checked=false; document.getElementById('corp-sig-input').disabled=true; document.getElementById('corp-sig-input').value=''; document.getElementById('corp-submit-btn').disabled=true; }
+  }
+
+  document.getElementById('corp-select-all-btn').addEventListener('click', function(){
+    document.querySelectorAll('#corp-clauses-container input[type="checkbox"]').forEach(function(cb){
+      if(!cb.checked){ cb.checked=true; cb.dispatchEvent(new Event('change')); }
+    });
+    this.textContent='✓ All Clauses Selected'; this.disabled=true;
+    announce('All 19 clauses selected.');
+  });
+
+  document.getElementById('corp-final-agree').addEventListener('change', function(){
+    var si = document.getElementById('corp-sig-input');
+    if(this.checked && corpCount===19){ si.disabled=false; si.focus(); }
+    else { si.disabled=true; si.value=''; document.getElementById('corp-submit-btn').disabled=true; }
+  });
+
+  document.getElementById('corp-sig-input').addEventListener('input', function(){
+    document.getElementById('corp-submit-btn').disabled = this.value.trim().length < 2;
+    document.getElementById('corp-sig-err').textContent = '';
+  });
+
+  document.getElementById('corp-submit-btn').addEventListener('click', function(){
+    var company  = document.getElementById('book-company').value.trim();
+    var name     = document.getElementById('book-name').value.trim();
+    var email    = document.getElementById('book-email').value.trim();
+    var headcount= document.getElementById('book-headcount').value.trim();
+    var sig      = document.getElementById('corp-sig-input').value.trim();
+
+    if (sig.toLowerCase() !== name.toLowerCase()) {
+      document.getElementById('corp-sig-err').textContent='Signature must match your name: "'+name+'"';
+      document.getElementById('corp-sig-input').setAttribute('aria-invalid','true');
+      document.getElementById('corp-sig-input').focus(); return;
+    }
+    document.getElementById('corp-sig-err').textContent='';
+
+    var submitBtn = document.getElementById('corp-submit-btn');
+    submitBtn.disabled=true; submitBtn.textContent='Submitting...';
+
+    var now = new Date(); var timeStr = now.toLocaleString();
+
+    if (typeof emailjs !== 'undefined') {
+      emailjs.send(EMAILJS_SERVICE_ID, TMPL_BOOKING_SIGNED, {
+        company_name:  company,
+        contact_name:  name,
+        contact_email: email,
+        headcount:     headcount,
+        class_type:    document.getElementById('book-class-type').value,
+        location:      document.getElementById('book-location').value.trim() || 'Not provided',
+        injuries:      document.getElementById('book-injuries').value.trim() || 'None provided',
+        sign_time:     timeStr,
+        to_email:      'auricmovement@outlook.com'
+      }).then(function(){
+        submitBtn.disabled=false; submitBtn.textContent='Submit Booking ✦';
+        document.getElementById('booking-conf-company').textContent = company;
+        document.getElementById('booking-conf-name').textContent    = name;
+        document.getElementById('booking-conf-time').textContent    = timeStr;
+        document.getElementById('step-waiver').classList.add('hidden');
+        document.getElementById('step-booking-done').classList.remove('hidden');
+        document.getElementById('step-booking-done').scrollIntoView({behavior:'smooth'});
+        announce('Booking submitted successfully!');
+      }).catch(function(){
+        submitBtn.disabled=false; submitBtn.textContent='Submit Booking ✦';
+        document.getElementById('booking-email-status').innerHTML='<div style="color:var(--red);font-size:.85rem;margin-top:.5rem;">⚠️ Could not submit. Please email us at auricmovement@outlook.com</div>';
+      });
+    }
+  });
+
+});
+</script>
+</body>
+</html>
